@@ -8,13 +8,15 @@ import psycopg2
 from psycopg2 import pool
 from typing import Optional
 
-# Database Configuration from Environment Variables
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_PORT = int(os.getenv("DB_PORT", 5432))
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "postgres")
-DB_NAME = os.getenv("DB_NAME", "community_members_db")
+from dotenv import load_dotenv
 
+load_dotenv()
+
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = int(os.getenv("DB_PORT"))
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_NAME = os.getenv("DB_NAME")
 # Connection String
 DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
@@ -35,7 +37,8 @@ class DatabasePool:
                 port=DB_PORT,
                 user=DB_USER,
                 password=DB_PASSWORD,
-                database=DB_NAME
+                database=DB_NAME,
+                sslmode="require" if "render.com" in DB_HOST else "prefer"
             )
         return cls._pool
     

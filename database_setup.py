@@ -331,22 +331,22 @@ def main():
     
     try:
         conn = get_db_connection()
-        
+        print(conn)
         # Create tables
-        # create_tables(conn)
+        #create_tables(conn)
 
-        #insert sample data
-        insert_sample_data(conn)
+        # #insert sample data
+        # insert_sample_data(conn)
 
         
-        # Verify
-        verify_database(conn)
+        # # Verify
+        # verify_database(conn)
         
-        #clear sample data
-        clear_sample_data(conn)
+        # #clear sample data
+        # clear_sample_data(conn)
 
-        #close db connection
-        close_db_connection(conn)
+        # close db connection
+        #close_db_connection(conn)
         
         print("\n" + "="*60)
         print(f"✅ DATABASE SETUP COMPLETE!")

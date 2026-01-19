@@ -11,6 +11,9 @@ from datetime import datetime
 import time
 import logging
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from trial_text2sql import QueryProcessor
 # from db_config import GEMINI_API_KEY as API_KEY_ENV
@@ -19,7 +22,7 @@ from trial_text2sql import QueryProcessor
 # CONFIGURATION
 # ============================================================================
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyBOouWbG7RN6fPgDu2vaUebz3vrYm0G4WU")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # Setup logging
 logging.basicConfig(

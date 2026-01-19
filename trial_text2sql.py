@@ -6,7 +6,11 @@ Combines fuzzy matching + Text2SQL engine for end-to-end query processing
 import google.generativeai as genai
 import time
 from typing import Dict, List, Optional, Tuple
-from datetime import datetime
+from datetime import dßatetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Import the fuzzy matching components
 from fuzzy_matching import QueryNormalizer
@@ -395,14 +399,14 @@ def main():
     """Test the integrated query processor"""
     
     # Get API key
-    api_key = "AIzaSyBOouWbG7RN6fPgDu2vaUebz3vrYm0G4WU"
+    api_key = os.getenv("GEMINI_API_KEY")
     
     if not api_key:
         print("❌ API key is required")
         return
     
     # Initialize processor
-    processor = QueryProcessor(api_key, DB_PATH)
+    processor = QueryProcessor(api_key)
     
     # Test queries
     test_queries = [
