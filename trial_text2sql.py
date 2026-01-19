@@ -6,7 +6,7 @@ Combines fuzzy matching + Text2SQL engine for end-to-end query processing
 import google.generativeai as genai
 import time
 from typing import Dict, List, Optional, Tuple
-from datetime import dßatetime
+from datetime import datetime
 import os
 from dotenv import load_dotenv
 
